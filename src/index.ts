@@ -1,8 +1,19 @@
-import { User } from "./models/User";
+import { User } from './models/User';
 
-const user = new User({ name: "Ozan", age: 25 });
+const user = new User({ name: 'Ozan', age: 25 });
 
-user.set({ name: "Tester" });
+user.on('change', () => {
+    console.log('Change #1');
+});
+user.on('change', () => {
+    console.log('Change #2');
+});
+user.on('hover', () => {
+    console.log('Hover #1');
+});
 
-console.log(user.get("name"));
-console.log(user.get("age"));
+user.trigger('change');
+user.trigger('hover');
+user.trigger('click'); // unregistered
+
+console.log(user);

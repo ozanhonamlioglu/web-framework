@@ -1,10 +1,5 @@
-import { User } from './models/User';
+import { UserForm } from './views/UserForm';
 
-const user = User.buildUser({ id: 1, name: 'Ozan' });
-
-user.on('change', () => {
-    console.log(user);
-});
-
-user.save();
-user.fetch();
+const root = document.getElementById('root');
+const userForm = new UserForm(root);
+userForm.render();
